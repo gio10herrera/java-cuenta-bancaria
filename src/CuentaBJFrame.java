@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class CuentaBJFrame {
     static JLabel lblNumCuenta, lblNombreCliente, lblSaldo, lblResultado;
@@ -11,7 +12,28 @@ public class CuentaBJFrame {
     public static void main(String[] args) {
         inicializarJFrame();
         inicializarComponentes();
+        inicializarPanelPadre();
+        inicializarFirstSonPanel();
+        inicializarSecondPanel();
+        inicializarThirdPanel();
         frame.setVisible(true);
+    }
+
+    private static void inicializarThirdPanel() {
+        thirdSonPanel = new JPanel();
+    }
+
+    private static void inicializarSecondPanel() {
+        secondSonPanel = new JPanel(new GridLayout(1, 1));
+    }
+
+    private static void inicializarFirstSonPanel() {
+        firstSonPanel = new JPanel();
+        firstSonPanel.setLayout(new BoxLayout(firstSonPanel, BoxLayout.Y_AXIS));
+    }
+
+    private static void inicializarPanelPadre() {
+        panelPadre = new JPanel(new BorderLayout());
     }
 
     private static void inicializarComponentes() {
