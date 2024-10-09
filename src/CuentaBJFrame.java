@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class CuentaBJFrame {
@@ -36,6 +39,7 @@ public class CuentaBJFrame {
 
     private static void addComponentsToThirdSonPanel() {
         thirdSonPanel.add(lblResultado);
+        thirdSonPanel.add(Box.createHorizontalStrut(15));
         thirdSonPanel.add(txtAreaResultado);
     }
 
@@ -46,8 +50,10 @@ public class CuentaBJFrame {
     private static void addComponentsToFirstSonPanel() {
         firstSonPanel.add(lblNumCuenta);
         firstSonPanel.add(txtNumCuenta);
+        firstSonPanel.add(Box.createVerticalStrut(10));
         firstSonPanel.add(lblNombreCliente);
         firstSonPanel.add(txtNombreCliente);
+        firstSonPanel.add(Box.createVerticalStrut(10));
         firstSonPanel.add(lblSaldo);
         firstSonPanel.add(txtSaldo);
     }
@@ -55,15 +61,19 @@ public class CuentaBJFrame {
     private static void inicializarThirdPanel() {
         thirdSonPanel = new JPanel();
         thirdSonPanel.setLayout(new BoxLayout(thirdSonPanel, BoxLayout.X_AXIS));
+        thirdSonPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     }
 
     private static void inicializarSecondPanel() {
-        secondSonPanel = new JPanel(new GridLayout(1, 1));
+        secondSonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        //secondSonPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        secondSonPanel.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new LineBorder(Color.LIGHT_GRAY)));
     }
 
     private static void inicializarFirstSonPanel() {
         firstSonPanel = new JPanel();
         firstSonPanel.setLayout(new BoxLayout(firstSonPanel, BoxLayout.Y_AXIS));
+        firstSonPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     }
 
     private static void inicializarPanelPadre() {
@@ -86,6 +96,10 @@ public class CuentaBJFrame {
         txtSaldo = new JTextField();
         txtSaldo.setHorizontalAlignment(SwingConstants.CENTER);
         txtAreaResultado = new JTextArea();
+        txtAreaResultado.setRows(3);
+        txtAreaResultado.setEditable(false);
+        txtAreaResultado.setEnabled(false);
+        txtAreaResultado.setBorder(new LineBorder(Color.LIGHT_GRAY));
         btnDesplegarCuenta = new JButton("Desplegar Cuenta");
     }
 
