@@ -17,7 +17,12 @@ public class CuentaBJFrame {
         inicializarSecondPanel();
         inicializarThirdPanel();
         addComponentsToFirstSonPanel();
+        addComponentsToSecondSonPanel();
         frame.setVisible(true);
+    }
+
+    private static void addComponentsToSecondSonPanel() {
+        secondSonPanel.add(btnDesplegarCuenta);
     }
 
     private static void addComponentsToFirstSonPanel() {
