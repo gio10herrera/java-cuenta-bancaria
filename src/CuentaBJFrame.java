@@ -3,6 +3,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CuentaBJFrame {
     static JLabel lblNumCuenta, lblNombreCliente, lblSaldo, lblResultado;
@@ -11,6 +13,7 @@ public class CuentaBJFrame {
     static JButton btnDesplegarCuenta;
     static JFrame frame;
     static JPanel panelPadre, firstSonPanel, secondSonPanel, thirdSonPanel;
+    static CuentaBancaria cuentaBancaria;
 
     public static void main(String[] args) {
         inicializarJFrame();
@@ -24,7 +27,29 @@ public class CuentaBJFrame {
         addComponentsToThirdSonPanel();
         addComponentsToPanelPadre();
         addPanelPadreToFrame();
+        implementarBoton();
         frame.setVisible(true);
+    }
+
+    private static void implementarBoton() {
+        btnDesplegarCuenta.addActionListener(e -> {
+            crearCuentaBancaria();
+            mostrarCuentaBancaria();
+        });
+    }
+
+    private static void mostrarCuentaBancaria() {
+        if (cuentaBancaria != null) {
+            String resultado = "Numero de cuenta: " + cuentaBancaria.getNumeroCuenta() + "\nNombre: " + cuentaBancaria.getNombreCliente() + "\nSaldo: " + cuentaBancaria.getSaldo();
+            txtAreaResultado.setText(resultado);
+        }
+    }
+
+    private static void crearCuentaBancaria() {
+        String numCuenta = txtNumCuenta.getText();
+        String nombreCliente = txtNombreCliente.getText();
+        double saldo = Double.parseDouble(txtSaldo.getText());
+        cuentaBancaria = new CuentaBancaria(numCuenta, nombreCliente, saldo);
     }
 
     private static void addPanelPadreToFrame() {
@@ -99,6 +124,7 @@ public class CuentaBJFrame {
         txtAreaResultado.setRows(3);
         txtAreaResultado.setEditable(false);
         txtAreaResultado.setEnabled(false);
+        txtAreaResultado.setDisabledTextColor(Color.GRAY);
         txtAreaResultado.setBorder(new LineBorder(Color.LIGHT_GRAY));
         btnDesplegarCuenta = new JButton("Desplegar Cuenta");
     }
