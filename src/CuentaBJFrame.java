@@ -19,7 +19,14 @@ public class CuentaBJFrame {
         addComponentsToFirstSonPanel();
         addComponentsToSecondSonPanel();
         addComponentsToThirdSonPanel();
+        addComponentsToPanelPadre();
         frame.setVisible(true);
+    }
+
+    private static void addComponentsToPanelPadre() {
+        panelPadre.add(firstSonPanel, BorderLayout.NORTH);
+        panelPadre.add(secondSonPanel, BorderLayout.CENTER);
+        panelPadre.add(thirdSonPanel, BorderLayout.SOUTH);
     }
 
     private static void addComponentsToThirdSonPanel() {
