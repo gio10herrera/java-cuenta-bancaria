@@ -20,7 +20,12 @@ public class CuentaBJFrame {
         addComponentsToSecondSonPanel();
         addComponentsToThirdSonPanel();
         addComponentsToPanelPadre();
+        addPanelPadreToFrame();
         frame.setVisible(true);
+    }
+
+    private static void addPanelPadreToFrame() {
+        frame.getContentPane().add(panelPadre);
     }
 
     private static void addComponentsToPanelPadre() {
@@ -49,6 +54,7 @@ public class CuentaBJFrame {
 
     private static void inicializarThirdPanel() {
         thirdSonPanel = new JPanel();
+        thirdSonPanel.setLayout(new BoxLayout(thirdSonPanel, BoxLayout.X_AXIS));
     }
 
     private static void inicializarSecondPanel() {
